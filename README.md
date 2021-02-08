@@ -1,9 +1,9 @@
 # POKEDEX
 
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+- Daniel Ribeiro Sacramento
+- Fabio dos Santos
+- Márcia Dolores Simplicio
 
 Link do Surge: www.link.com.br
 
