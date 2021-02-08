@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "20e09630-ffce-450a-bc59-cf68335bdec1",
+		"name": "PokeDex",
+		"description": "Collection de endpoints para o projeto da semana 11",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Pokemons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pokemon Details By Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "traz os detalhes de um pokemon específico"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pokemon Details By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "traz os detalhes de um pokemon específico"
+			},
+			"response": []
+		}
+	]
+}
