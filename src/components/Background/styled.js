@@ -6,7 +6,7 @@ export const Background = styled.div`
   left: 0;
   z-index: -1;
 
-  background-image: url(${props.image});
+  background-image: url(${props=>props.image});
   width: 100vw;
   height: 100vh;
 `;
