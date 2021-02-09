@@ -1,33 +1,36 @@
-import React from "react"
+import React from "react";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { goToPage, goBack } from "./Coordinator";
-import Coordinator from '../router/Coordinator'
+import Header from "../components/Header";
+import HomePage from '../pagesTeste/PageHome';
+import PokedexPage from '../pagesTeste/PagePokedex';
+import PokeDetailPage from '../pagesTeste/PageDetails';
 
 const Router = () => {
     return (
         <BrowserRouter>
             <Switch>
                 <Route exact path="/">
-                    <Coordinator 
+                    <Header 
                         title="Lista de pokemons"
                         BtnPokedex={goToPage}
                     />
-                    {/* <HomePage /> */}
+                    <HomePage />
                 </Route>
                 <Route exact path="/poke-detail/:pokeName">
-                    <Coordinator 
+                    <Header 
                         BtnBack={goBack}
                         title=""
                         BtnPokedex={goToPage}
                     />
-                   {/*  <PokeDetailPage /> */}
+                    <PokeDetailPage />
                 </Route>
                 <Route exact path="/pokedex">
-                    <Coordinator 
+                    <Header 
                         BtnHome={goToPage}
                         title="Pokedex"
                     />
-                   {/*  <PokedexPage /> */}
+                    <PokedexPage />
                 </Route>
             </Switch>
         </BrowserRouter>
