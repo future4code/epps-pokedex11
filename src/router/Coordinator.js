@@ -10,14 +10,14 @@ export const goBack = (history) => {
       history.push(path)
   }
 
-  export default function Coordinator(){
+//   export default function Coordinator(){
 
-    const history = useHistory()
-    return(
-        <div>
-            <button onClick={() => goToPage(history, '/')}>Home</button>
-            <button onClick={() => goToPage(history, '/pokedex')}>Pokedex</button>
-            <button onClick={() => goToPage(history, '/poke-detail/daniel')}>Detail</button>
-        </div>
-    )
-  }
+//     const history = useHistory()
+//     return(
+//         <div>
+//             <button onClick={() => goToPage(history, '/')}>Home</button>
+//             <button onClick={() => goToPage(history, '/pokedex')}>Pokedex</button>
+//             <button onClick={() => goToPage(history, '/poke-detail/daniel')}>Detail</button>
+//         </div>
+//     )
+//   }

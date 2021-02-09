@@ -4,6 +4,7 @@ import "../../fonts/fonts.css";
 export const Wrapper = styled.div`
   position: fixed;
   z-index: 999;
+  cursor: default;
 
   top: 0;
   left: 0;
@@ -19,14 +20,15 @@ export const Wrapper = styled.div`
   box-shadow: 0px 4px 8px -6px;
 
   .pokedex-btn {
-    margin-top: 5px;
-    height: 40px;
+    height: 42px;
     width: fit-content;
+    border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     &:hover {
-      transform: scale(1.2) rotate(-7deg);
-      transition: all 0.3s ease-in-out;
+      transform: scale(1.05);
+      transition: all 0.2s ease-in-out;
+      background-color: rgba(255, 203, 5, 0.9);
     }
 
     img {
@@ -36,15 +38,19 @@ export const Wrapper = styled.div`
 
   .title {
     display: flex;
-    margin-top: -30px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    margin-top: -25px;
     width: 100%;
     h2 {
       font-family: "PokemonFont";
-      font-size: 30px;
+      font-size: 28px;
       letter-spacing: 3px;
 
       color: #ffcb05;
-      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-width: 0.5px;
       -webkit-text-stroke-color: #003a70;
     }
   }

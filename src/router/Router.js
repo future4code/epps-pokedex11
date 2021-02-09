@@ -1,38 +1,35 @@
-import React from "react"
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { goToPage, goBack } from "./Coordinator";
-import Coordinator from '../router/Coordinator'
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import styled from 'styled-components';
+
+import HomePage from "./../pages/HomePage/index";
+import PokemonDetailsPage from "./../pages/PokemonDetailsPage/index";
+import PokedexPage from "./../pages/PokedexPage/index";
+import Header from "./../components/Header/index";
+
+const Container = styled.div`
+margin-top: 70px;
+`
 
 const Router = () => {
-    return (
-        <BrowserRouter>
-            <Switch>
-                <Route exact path="/">
-                    <Coordinator 
-                        title="Lista de pokemons"
-                        BtnPokedex={goToPage}
-                    />
-                    {/* <HomePage /> */}
-                </Route>
-                <Route exact path="/poke-detail/:pokeName">
-                    <Coordinator 
-                        BtnBack={goBack}
-                        title=""
-                        BtnPokedex={goToPage}
-                    />
-                   {/*  <PokeDetailPage /> */}
-                </Route>
-                <Route exact path="/pokedex">
-                    <Coordinator 
-                        BtnHome={goToPage}
-                        title="Pokedex"
-                    />
-                   {/*  <PokedexPage /> */}
-                </Route>
-            </Switch>
-        </BrowserRouter>
-    )
-}
+  return (
+    <BrowserRouter>
+      <Header />
+      <Container>
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route exact path="/poke-detail/:pokemonId">
+            <PokemonDetailsPage />
+          </Route>
+          <Route exact path="/pokedex">
+            <PokedexPage />
+          </Route>
+        </Switch>
+      </Container>
+    </BrowserRouter>
+  );
+};
 
-export default Router
-
+export default Router;
