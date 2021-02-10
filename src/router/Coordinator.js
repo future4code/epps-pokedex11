@@ -1,14 +1,17 @@
-import React from 'react'
-import {useHistory} from 'react-router-dom'
+import React, { useContext } from 'react'
+import {useHistory, useParams} from 'react-router-dom';
+import GlobalStateContext from '../contexts/GlobalStateContext';
 
 
 export const goBack = (history) => {
     history.goBack();
   };
   
-  export const goToPage = (history, path) =>{
+  export const goToPage = (history, path, setter) =>{
       history.push(path)
   }
+
+
 
 //   export default function Coordinator(){
 

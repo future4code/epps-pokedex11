@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { Container } from "./styled";
 
 import {goToPage} from "../../router/Coordinator"
+import GlobalStateContext from "../../contexts/GlobalStateContext";
 
 const Card = (props) => {
   const history = useHistory();
+
+  const {setTargetId} = useContext(GlobalStateContext)
+
+  const seeDetails = (pokemonId, history) =>{
+    setTargetId(pokemonId)
+    history.push(`/poke-detail/${pokemonId}`)
+  }
 
   return (
     <Container>
@@ -18,7 +26,7 @@ const Card = (props) => {
       </div>
       <div className="btn-container">
         <button>Adicionar à PokéDex</button>
-        <button onClick={() => goToPage(history, `/poke-detail/${props.pokemonId}`)}>
+        <button onClick={() => seeDetails(props.pokemonId, history)}>
           Detalhes
         </button>
       </div>
