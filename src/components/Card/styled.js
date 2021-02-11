@@ -46,8 +46,10 @@ export const Container = styled.div`
   }
 
   .btn-container {
+    display: flex;
+
     button {
-      height: 2rem;
+      height: 3rem;
       width: 100%;
       background-color: #cc0000;
       font-weight: bold;
@@ -66,11 +68,11 @@ export const Container = styled.div`
         transition: all 0.3s ease-in-out;
       }
     }
-    /* button:nth-child(1) {
+    button:nth-child(1) {
       border-radius: 0 0 0 5px;
-    } */
+    }
     button:nth-child(2) {
-      border-radius: 0 0 5px 5px;
+      border-radius: 0 0 5px 0;
     }
   }
 `;
