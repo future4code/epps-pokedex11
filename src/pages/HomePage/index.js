@@ -4,7 +4,7 @@ import axios from "axios";
 import bg from "../../images/pokemon-pattern.jpg";
 import { Background } from "./../../components/Background/styled";
 import { PokemonsContainer } from "./styled";
-import { baseUrl } from "./../../parameters/API";
+import { baseUrl, BASE_URL } from "./../../parameters/API";
 import Card from "../../components/Card";
 
 
@@ -13,7 +13,7 @@ const HomePage = () => {
 
   const GetPokemons = async () => {
     try {
-      const res = await axios.get(baseUrl);
+      const res = await axios.get(`${BASE_URL}?limit=20&offset=0`);
       let newArr = res.data.results
       //   Adicionado Id e link de imagem ao Array de Pokemons
       newArr.forEach((pokemon) => {
