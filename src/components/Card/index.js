@@ -5,48 +5,15 @@ import { BASE_URL } from "../../parameters/API";
 import { goToPage } from "../../router/Coordinator";
 import GlobalStateContext from "../../contexts/GlobalStateContext";
 import { Container } from "./styled";
+import { Button } from './../GlobalStyleds/GlobalStyleds';
 
 const Card = (props) => {
   const history = useHistory();
-  const { pokedex, setPokedex } = useContext(GlobalStateContext);
-
-  const addToPokedex = async (pokemonId) => {
-    try {
-      const res = await axios.get(`${BASE_URL}/${pokemonId}`);
-      const pokemonIndex = pokedex.findIndex(
-        (pokemon) => pokemon.id === pokemonId
-      );
-      if (pokemonIndex < 0) {
-        const newPokemon = {
-          id: res.data.id,
-          name: res.data.name,
-          moves: res.data.moves,
-          stats: res.data.stats,
-          types: res.data.types,
-          sprites: res.data.sprites,
-        };
-        setPokedex((pokedex) => [...pokedex, newPokemon]);
-        alert("O Pokémon foi adicionado à Pokédex.");
-      } else {
-        alert("O Pokémon já encontra-se na Pokédex.");
-      }
-    } catch (err) {
-      alert(err.message);
-    }
-  };
-
-  const removeFromPokedex = (pokemonId) => {
-    const pokemonIndex = pokedex.findIndex(
-      (pokemon) => pokemon.id === pokemonId
-    );
-    let newPokedex = [...pokedex]
-    newPokedex.splice(pokemonIndex,1);
-    setPokedex(newPokedex);
-    alert("O Pokémon foi libertado!")
-  };
+  const { pokedex, addToPokedex, removeFromPokedex } = useContext(
+    GlobalStateContext
+  );
 
   const currentPathname = window.location.pathname; //CAPTURA O CAMINHO DA URL
-  console.log(currentPathname);
 
   useEffect(() => {
     if (pokedex.length > 0) {
@@ -64,9 +31,9 @@ const Card = (props) => {
       </div>
       <div className="btn-container">
         {currentPathname === "/pokedex" ? (
-          <button onClick={() => removeFromPokedex(props.pokemonId)}>
+          <Button onClick={() => removeFromPokedex(props.pokemonId)}>
             Libertar
-          </button> //SE ESTIVER NA PÁGINA DA POKEDEX, O TEXTO DO BOTÃO MUDA PARA 'LIBERTAR'
+          </Button> //SE ESTIVER NA PÁGINA DA POKEDEX, O TEXTO DO BOTÃO MUDA PARA 'LIBERTAR'
         ) : (
           <button onClick={() => addToPokedex(props.pokemonId)}>
             Capturar

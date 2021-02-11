@@ -1,12 +1,14 @@
 import React, { useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import GlobalStateContext from "../../contexts/GlobalStateContext";
-
-import bg from "../../images/pokemon-pattern.jpg";
-import { Background } from "./../../components/Background/styled";
 import { PokemonsContainer } from "./styled";
 import Card from "../../components/Card";
+import { Button } from "../../components/GlobalStyleds/GlobalStyleds";
+import { goToPage } from "../../router/Coordinator";
+
 
 const PokedexPage = () => {
+  const history = useHistory();
   const { pokedex, setPokedex } = useContext(GlobalStateContext);
 
   useEffect(() => {
@@ -17,8 +19,10 @@ const PokedexPage = () => {
   }, []);
   return (
     <div>
-      <Background image={bg} />
       <PokemonsContainer>
+        <div className="back-btn">
+          <Button onClick={()=>goToPage(history, "/")}>Voltar</Button>
+        </div>
         {pokedex.map((pokemon) => {
           return (
             <Card

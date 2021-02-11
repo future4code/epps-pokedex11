@@ -1,19 +1,22 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 import HomePage from "./../pages/HomePage/index";
 import PokemonDetailsPage from "./../pages/PokemonDetailsPage/index";
 import PokedexPage from "./../pages/PokedexPage/index";
 import Header from "./../components/Header/index";
+import bg from "../images/pokemon-pattern.jpg";
+import { Background } from "./../components/GlobalStyleds/GlobalStyleds";
 
 const Container = styled.div`
-margin-top: 70px;
-`
+  margin-top: 70px;
+`;
 
 const Router = () => {
   return (
     <BrowserRouter>
+      <Background image={bg} />
       <Header />
       <Container>
         <Switch>

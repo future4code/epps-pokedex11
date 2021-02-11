@@ -1,67 +1,130 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import GlobalStateContext from '../../contexts/GlobalStateContext';
-import { goBack } from './../../router/Coordinator';
-import { ContainerPokemonDitails, ContainerContentPokemon } from '../PokemonDetailsPage/styled'; 
-
-
+import { Button } from "../../components/GlobalStyleds/GlobalStyleds";
+import GlobalStateContext from "../../contexts/GlobalStateContext";
+import { goToPage } from "../../router/Coordinator";
+import {
+  ContainerPokemonDitails,
+  ContainerContentPokemon,
+} from "../PokemonDetailsPage/styled";
 
 const PokemonDetailsPage = () => {
-    const history = useHistory()
-    const {pokemonId} = useParams();
+  const history = useHistory();
+  const { pokemonId } = useParams();
 
-    const { getPokemonDetails, pokemonDetails } = useContext(
-        GlobalStateContext
-    );
-  
-    useEffect(() =>{
-        getPokemonDetails(pokemonId);
-    }, [])
+  const {
+    pokedex,
+    getPokemonDetails,
+    pokemonDetails,
+    addToPokedex,
+    removeFromPokedex,
+  } = useContext(GlobalStateContext);
 
-    const stats = pokemonDetails.stats && pokemonDetails.stats.map((stat) =>{
-        return (
-            <p><strong>{stat.stat.name}:</strong> {stat.base_stat}</p>
-        )
-    })
+  const pokeIndex = pokedex.findIndex((pokemon) => pokemon.id == pokemonId);
+  useEffect(() => {
+    getPokemonDetails(pokemonId);
+    if (pokedex.length > 0) {
+      localStorage.setItem("pokedex", JSON.stringify(pokedex));
+    }
+  }, [pokedex]);
 
-    const types = pokemonDetails.types && pokemonDetails.types.map((type) =>{
-        return (
-            <div>
-                <p>{type.type.name}</p>
+  const stats =
+    pokemonDetails.stats &&
+    pokemonDetails.stats.map((stat) => {
+      return (
+        <p key={stat.name}>
+          <strong>
+            {stat.stat.name
+              .toLowerCase()
+              .split(" ")
+              .map(
+                (letter) => letter.charAt(0).toUpperCase() + letter.substring(1)
+              )
+              .join(" ")}
+            :
+          </strong>{" "}
+          {stat.base_stat}
+        </p>
+      );
+    });
+
+  const types =
+    pokemonDetails.types &&
+    pokemonDetails.types.map((type) => {
+      return (
+        <div key={type.name}>
+          <p>
+            {type.type.name
+              .toLowerCase()
+              .split(" ")
+              .map(
+                (letter) => letter.charAt(0).toUpperCase() + letter.substring(1)
+              )
+              .join(" ")}
+          </p>
+        </div>
+      );
+    });
+
+  const moves =
+    pokemonDetails.moves &&
+    pokemonDetails.moves.map((move, index) => {
+      return (
+        <p key={move.name}>
+          {move.move.name
+            .toLowerCase()
+            .split(" ")
+            .map(
+              (letter) => letter.charAt(0).toUpperCase() + letter.substring(1)
+            )
+            .join(" ")}
+        </p>
+      );
+    });
+
+  return (
+    <ContainerPokemonDitails>
+      <div className="back-btn">
+        <Button onClick={() => goToPage(history, "/")}>Voltar</Button>
+      </div>
+      {pokeIndex !== -1 ? (
+        <div className="catch-btn">
+          <Button onClick={() => removeFromPokedex(pokemonId)}>Libertar</Button>
+        </div>
+      ) : (
+        <div className="catch-btn">
+          <Button onClick={() => addToPokedex(pokemonId)}>Capturar</Button>
+        </div>
+      )}
+      {pokemonDetails && (
+        <ContainerContentPokemon>
+          <div className="imgs-Pokemon">
+            <img
+              src={
+                pokemonDetails.sprites && pokemonDetails.sprites.front_default
+              }
+            />
+            <img
+              src={
+                pokemonDetails.sprites && pokemonDetails.sprites.back_default
+              }
+            />
+          </div>
+          <div className="stats">
+            <h2>Estatíticas</h2>
+            {pokemonDetails.stats && stats}
+          </div>
+          <div className="types-And-Moves">
+            <div className="types">{types}</div>
+            <div className="moves">
+              <h2>Ataques</h2>
+              <div>{moves}</div>
             </div>
-        )
-    })
-
-    const moves = pokemonDetails.moves && pokemonDetails.moves.map((move, index) =>{
-        return index < 5 && <p>{move.move.name}</p>
-    })
-
-    return (
-        <ContainerPokemonDitails>
-            {pokemonDetails && 
-                <ContainerContentPokemon>
-                    <div className='imgs-Pokemon'>
-                        <img src={pokemonDetails.sprites && pokemonDetails.sprites.front_default}/>
-                        <img src={pokemonDetails.sprites && pokemonDetails.sprites.back_default}/>
-                    </div>
-                    <div className='stats'>
-                        <h2>Poderes</h2>
-                        {stats}
-                    </div>
-                    <div className='types-And-Moves'>
-                        <div className='types'>
-                            {types}
-                        </div>
-                        <div className='moves'>
-                            <h2>Principais Ataques</h2>
-                            {moves}
-                        </div>
-                    </div>
-                </ContainerContentPokemon>
-            }
-            <button onClick={()=>goBack(history)}>Voltar</button>
-        </ContainerPokemonDitails>
-    )
-}
+          </div>
+        </ContainerContentPokemon>
+      )}
+    </ContainerPokemonDitails>
+  );
+};
 
 export default PokemonDetailsPage;
