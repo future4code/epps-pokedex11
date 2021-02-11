@@ -7,4 +7,11 @@ export const PokemonsContainer = styled.div`
   flex-wrap: wrap;
   gap: 25px;
   padding: 15px;
+  padding-top: 70px;
+
+  .back-btn {
+    position: absolute;
+    top: 80px;
+    left: 10px;
+  }
 `;

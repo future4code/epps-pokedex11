@@ -3,10 +3,11 @@ import { useHistory } from "react-router-dom";
 import { goToPage } from "../../router/Coordinator";
 
 import { Wrapper } from "./styled";
-import headerLogo from "../../images/header-logo.png"
+import headerLogo from "../../images/header-logo.png";
 
 export default function Header() {
   const history = useHistory();
+
   return (
     <Wrapper>
       <div

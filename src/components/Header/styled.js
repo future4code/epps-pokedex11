@@ -36,6 +36,10 @@ export const Wrapper = styled.div`
     }
   }
 
+  .back-btn{
+    width: 100px;
+  }
+
   .title {
     display: flex;
     align-items: center;
