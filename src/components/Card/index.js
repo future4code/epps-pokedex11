@@ -11,11 +11,6 @@ const Card = (props) => {
 
   const {setTargetId} = useContext(GlobalStateContext)
 
-  const seeDetails = (pokemonId, history) =>{
-    setTargetId(pokemonId)
-    history.push(`/poke-detail/${pokemonId}`)
-  }
-
   return (
     <Container>
       <div className="label-container">
@@ -26,7 +21,7 @@ const Card = (props) => {
       </div>
       <div className="btn-container">
         <button>Adicionar à PokéDex</button>
-        <button onClick={() => seeDetails(props.pokemonId, history)}>
+        <button onClick={() => goToPage(history, `/poke-detail/${props.pokemonId}`, props.pokemonId)}>
           Detalhes
         </button>
       </div>

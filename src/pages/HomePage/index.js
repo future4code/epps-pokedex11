@@ -15,6 +15,7 @@ const HomePage = () => {
     try {
       const res = await axios.get(baseUrl);
       let newArr = res.data.results
+      console.log('new array', newArr)
       //   Adicionado Id e link de imagem ao Array de Pokemons
       newArr.forEach((pokemon) => {
         // Colocando a primeira letra maiúscula
