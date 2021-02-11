@@ -3,6 +3,7 @@ import axios from "axios";
 import GlobalStateContext from "../contexts/GlobalStateContext";
 import { BASE_URL } from "../parameters/API";
 
+
 const GlobalState = (props) => {
   const [pokedex, setPokedex] = useState([]);
   const [pokemonDetails, setPokemonDetails] = useState({});
