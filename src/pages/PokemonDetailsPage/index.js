@@ -4,6 +4,8 @@ import GlobalStateContext from '../../contexts/GlobalStateContext';
 import { goBack } from './../../router/Coordinator';
 import { ContainerPokemonDitails, ContainerContentPokemon } from '../PokemonDetailsPage/styled'; 
 
+
+
 const PokemonDetailsPage = () => {
     const history = useHistory()
     const {pokemonId} = useParams();
@@ -11,10 +13,9 @@ const PokemonDetailsPage = () => {
     const { getDetailsPokemon, pokemonDetails } = useContext(
         GlobalStateContext
     );
-    
-
+  
     useEffect(() =>{
-        getDetailsPokemon(pokemonId)
+        getPokemonDetails(pokemonId);
     }, [])
 
     const stats = pokemonDetails && pokemonDetails.stats.map((stat) =>{
@@ -57,9 +58,8 @@ const PokemonDetailsPage = () => {
                 </div>
             </ContainerContentPokemon>
             <button onClick={()=>goBack(history)}>Voltar</button>
-            {/* DETALHES ID:{pokemonId} */}
         </ContainerPokemonDitails>
     )
 }
 
-export default PokemonDetailsPage
+export default PokemonDetailsPage;
