@@ -1,7 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
-import { BASE_URL } from "../../parameters/API";
 import { goToPage } from "../../router/Coordinator";
 import GlobalStateContext from "../../contexts/GlobalStateContext";
 import { Container } from "./styled";
@@ -29,21 +27,21 @@ const Card = (props) => {
       <div className="img-container">
         <img src={props.image} alt="pokemon image" />
       </div>
-      <div className="btn-container">
+      <div className="cards-btn-container">
         {currentPathname === "/pokedex" ? (
           <Button onClick={() => removeFromPokedex(props.pokemonId)}>
             Libertar
           </Button> //SE ESTIVER NA PÁGINA DA POKEDEX, O TEXTO DO BOTÃO MUDA PARA 'LIBERTAR'
         ) : (
-          <button onClick={() => addToPokedex(props.pokemonId)}>
+          <Button onClick={() => addToPokedex(props.pokemonId)}>
             Capturar
-          </button> //SE ESTIVER NAS OUTRAS PÁGINAS, O TEXTO DO BOTÃO MUDA PARA 'CAPTURAR'
+          </Button> //SE ESTIVER NAS OUTRAS PÁGINAS, O TEXTO DO BOTÃO MUDA PARA 'CAPTURAR'
         )}
-        <button
+        <Button
           onClick={() => goToPage(history, `/poke-detail/${props.pokemonId}`)}
         >
           Detalhes
-        </button>
+        </Button>
       </div>
     </Container>
   );
