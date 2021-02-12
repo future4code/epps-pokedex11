@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 import "../../fonts/fonts.css";
 
@@ -45,34 +45,7 @@ export const Container = styled.div`
     }
   }
 
-  .btn-container {
+  .cards-btn-container {
     display: flex;
-
-    button {
-      height: 3rem;
-      width: 100%;
-      background-color: #cc0000;
-      font-weight: bold;
-      font-size: 14px;
-      color: #ffcb05;
-      letter-spacing: 1px;
-      border: 1px solid #3d7dca;
-
-      outline: none;
-      cursor: pointer;
-      transition: all 0.3s ease-in-out;
-
-      &:hover {
-        color: #cc0000;
-        background-color: #ffcb05;
-        transition: all 0.3s ease-in-out;
-      }
-    }
-    button:nth-child(1) {
-      border-radius: 0 0 0 5px;
-    }
-    button:nth-child(2) {
-      border-radius: 0 0 5px 0;
-    }
   }
 `;
