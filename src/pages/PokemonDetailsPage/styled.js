@@ -30,6 +30,10 @@ export const ContainerPokemonDetails = styled.div`
     -webkit-text-stroke-width: 0.7px;
     -webkit-text-stroke-color: #003a70;
     margin: 0;
+
+    @media(max-width: 619px){
+      top: 100px;
+    }
   }
 `;
 
