@@ -8,6 +8,11 @@ export const ContainerPokemonDetails = styled.div`
   justify-content: space-evenly;
   margin-top: 100px;
   cursor: default;
+
+  /* @media screen and (max-width: 619px) {
+      margin-top: 425px;
+  } */
+
   .back-btn {
     position: absolute;
     top: 80px;
@@ -27,6 +32,10 @@ export const ContainerPokemonDetails = styled.div`
     -webkit-text-stroke-width: 0.7px;
     -webkit-text-stroke-color: #003a70;
     margin: 0;
+
+    @media(max-width: 619px){
+      margin-top: 700px;
+    }
   }
 `;
 
@@ -35,7 +44,6 @@ export const ContainerContentPokemon = styled.div`
   width: 850px;
   max-width: calc(100vw - 20px);
   justify-content: space-evenly;
-  height: 60vh;
   flex-wrap: wrap;
   gap: 10px;
   color: #ffcb05;
@@ -63,6 +71,10 @@ export const ContainerContentPokemon = styled.div`
       background-color: #cc0000;
       width: 150px;
       transition: all 0.3s ease-in-out;
+
+      @media(max-width: 619px){
+        width: 135px;
+      }
       &:hover {
         box-shadow: 2px 2px 5px black;
         transition: all 0.3s ease-in-out;
@@ -70,6 +82,7 @@ export const ContainerContentPokemon = styled.div`
     }
     @media screen and (max-width: 619px) {
       flex-direction: row;
+      width: 300px;
     }
   }
   .stats {
@@ -86,6 +99,10 @@ export const ContainerContentPokemon = styled.div`
     justify-content: space-between;
     flex-direction: column;
     width: 300px;
+
+    @media screen and (max-width: 619px) {
+      margin-bottom: 30px;
+  }
   }
   .types {
     display: flex;

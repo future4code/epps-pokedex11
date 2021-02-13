@@ -24,6 +24,11 @@ export const Container = styled.div`
     overflow-x: hidden;
     overflow-y: hidden;
 
+    @media(max-width: 619px){
+      height: 68px;
+      align-items: center;
+    }
+
     h2 {
       font-family: "PokemonFont";
       margin-top: -15px;

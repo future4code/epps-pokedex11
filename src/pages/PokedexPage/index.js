@@ -21,9 +21,13 @@ const PokedexPage = () => {
       <div className="back-btn">
         <Button onClick={() => goToPage(history, "/")}>Voltar</Button>
       </div>
-      <div className="battle-btn">
-        <Button onClick={() => goToPage(history, "/battle")}>Batalhar</Button>
-      </div>
+      {pokedex.length > 0 ? 
+        <div className="battle-btn">
+          <Button onClick={() => goToPage(history, "/battle")}>Batalhar</Button>
+        </div> : 
+        ''
+      }
+      
       {pokedex.map((pokemon) => {
         return (
           <Card

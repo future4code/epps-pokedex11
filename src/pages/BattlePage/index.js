@@ -13,6 +13,8 @@ const BattlePage = () => {
   const history = useHistory();
   const { pokedex, setPokedex } = useContext(GlobalStateContext);
 
+  console.log('pokedex', pokedex)
+
   const [pokemonA, setPokemonA] = useState({});
   const [pokemonB, setPokemonB] = useState({});
   const [vencedor, setVencedor] = useState("");
