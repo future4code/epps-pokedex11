@@ -22,7 +22,7 @@ const GlobalState = (props) => {
       };
       setPokemonDetails(newPokemon);
     } catch (err) {
-      console.log(err);
+      alert(err);
     }
   };
 

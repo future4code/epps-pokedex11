@@ -43,7 +43,7 @@ const HomePage = () => {
       localStorage.setItem("pokemons", JSON.stringify(newArr));
       setPokemons(newArr);
     } catch (err) {
-      console.log(err);
+      alert(err);
     }
   };
 
@@ -81,7 +81,7 @@ const HomePage = () => {
         setPokemons(newList);
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   };
 
