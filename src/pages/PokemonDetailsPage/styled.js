@@ -32,7 +32,7 @@ export const ContainerPokemonDetails = styled.div`
     margin: 0;
 
     @media(max-width: 619px){
-      top: 100px;
+      top: 130px;
     }
   }
 `;
