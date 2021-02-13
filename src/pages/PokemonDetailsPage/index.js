@@ -148,7 +148,7 @@ const PokemonDetailsPage = () => {
       )}
       {pokemonDetails && (
         <>
-          <h2>{pokemonDetails.name}</h2>
+          <h2 className="name-title">{pokemonDetails.name}</h2>
           <ContainerContentPokemon>
             <div className="imgs-Pokemon">
               <img
