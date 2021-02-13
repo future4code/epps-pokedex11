@@ -14,7 +14,7 @@ const Card = (props) => {
   const currentPathname = window.location.pathname; //CAPTURA O CAMINHO DA URL
 
   useEffect(() => {
-    if (pokedex.length > 0) {
+    if (pokedex && pokedex.length > 0) {
       localStorage.setItem("pokedex", JSON.stringify(pokedex));
     }
   }, [pokedex]);

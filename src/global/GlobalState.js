@@ -4,6 +4,7 @@ import GlobalStateContext from "../contexts/GlobalStateContext";
 import { BASE_URL } from "../parameters/API";
 
 const GlobalState = (props) => {
+  const [pokemons, setPokemons] = useState([]);
   const [pokedex, setPokedex] = useState([]);
   const [pokemonDetails, setPokemonDetails] = useState({});
 
@@ -13,11 +14,7 @@ const GlobalState = (props) => {
       // setPokemonDetails(res.data);
       const newPokemon = {
         id: res.data.id,
-        name: res.data.name
-          .toLowerCase()
-          .split(" ")
-          .map((letter) => letter.charAt(0).toUpperCase() + letter.substring(1))
-          .join(" "),
+        name: camelCase(res.data.name),
         moves: res.data.moves,
         stats: res.data.stats,
         types: res.data.types,
@@ -29,6 +26,15 @@ const GlobalState = (props) => {
     }
   };
 
+  const camelCase = (text) => {
+    return (text.toLowerCase()
+             .split(" ")
+             .map(
+               (letter) => letter.charAt(0).toUpperCase() + letter.substring(1)
+             )
+             .join(" "))
+  }
+
    const addToPokedex = async (pokemonId) => {
      try {
        const res = await axios.get(`${BASE_URL}/${pokemonId}`);
@@ -38,19 +44,20 @@ const GlobalState = (props) => {
        if (pokemonIndex < 0) {
          const newPokemon = {
            id: res.data.id,
-           name: res.data.name
-             .toLowerCase()
-             .split(" ")
-             .map(
-               (letter) => letter.charAt(0).toUpperCase() + letter.substring(1)
-             )
-             .join(" "),
+           name: camelCase(res.data.name),
            moves: res.data.moves,
            stats: res.data.stats,
            types: res.data.types,
            sprites: res.data.sprites,
          };
-         setPokedex((pokedex) => [...pokedex, newPokemon]);
+         setPokedex([...pokedex, newPokemon])
+         localStorage.setItem("pokedex", JSON.stringify(pokedex));
+
+         let storedPokemons = JSON.parse(localStorage.getItem("pokemons"));
+         const index = storedPokemons.findIndex(pokemon=>pokemon.id == res.data.id)
+         storedPokemons.splice(index,1)
+         localStorage.setItem("pokemons", JSON.stringify(storedPokemons));
+         
          alert("O Pokémon foi adicionado à Pokédex.");
        } else {
          alert("O Pokémon já encontra-se na Pokédex.");
@@ -81,6 +88,9 @@ const GlobalState = (props) => {
     getPokemonDetails,
     addToPokedex,
     removeFromPokedex,
+    pokemons,
+    setPokemons,
+    camelCase,
   };
 
   return (

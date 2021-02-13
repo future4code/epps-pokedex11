@@ -8,7 +8,7 @@ export const Container = styled.div`
   cursor: default;
 
   width: 250px;
-  height: 300px;
+  height: 350px;
   border: 1px solid black;
   color: #000;
   box-shadow: 5px 5px 6px -3px #000;
@@ -20,12 +20,16 @@ export const Container = styled.div`
     align-items: center;
 
     background-color: #cc0000;
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
 
     h2 {
       font-family: "PokemonFont";
       margin-top: -15px;
       color: #ffcb05;
       font-size: 22px;
+      text-align: center;
       letter-spacing: 4px;
       -webkit-text-stroke-width: 0.5px;
       -webkit-text-stroke-color: #003a70;

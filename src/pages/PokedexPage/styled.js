@@ -14,4 +14,10 @@ export const PokemonsContainer = styled.div`
     top: 80px;
     left: 10px;
   }
+
+  .battle-btn {
+    position: absolute;
+    top: 80px;
+    right: 10px;
+  }
 `;
