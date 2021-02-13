@@ -8,6 +8,7 @@ import PokedexPage from "./../pages/PokedexPage/index";
 import Header from "./../components/Header/index";
 import bg from "../images/pokemon-pattern.jpg";
 import { Background } from "./../components/GlobalStyleds/GlobalStyleds";
+import BattlePage from './../pages/BattlePage/index';
 
 const Container = styled.div`
   margin-top: 70px;
@@ -28,6 +29,9 @@ const Router = () => {
           </Route>
           <Route exact path="/pokedex">
             <PokedexPage />
+          </Route>
+          <Route exact path="/battle">
+            <BattlePage />
           </Route>
         </Switch>
       </Container>

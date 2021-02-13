@@ -17,5 +17,4 @@ tendo também a opção de capturar ou libertar o mesmo.
 - 
 
 O que não funciona: 
-- Item 3
-- Item 4
+- Paginação não realizada

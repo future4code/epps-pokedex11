@@ -2,7 +2,7 @@
 <html lang="pt-br">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="%PUBLIC_URL%/pokeball.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -15,7 +15,29 @@
         margin: 0;
         box-sizing: border-box;
         font-family: "Roboto", sans-serif;
+      };
+
+      body{
+        background-color: transparent;
       }
+      /* width */
+      ::-webkit-scrollbar {
+        width: 15px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px #3d7dca;
+        /* border-radius: 10px; */
+        background-color: #cc0000;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #ffcb05;
+        border-radius: 10px;
+      }
+
     </style>
     <title>PokeDex</title>
   </head>

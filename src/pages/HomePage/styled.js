@@ -42,7 +42,7 @@ export const PokemonsContainer = styled.div`
 
       input {
         margin-right: 15px;
-        width: 210px;
+        width: 220px;
         border-radius: 5px;
         outline: none;
         border: none;
