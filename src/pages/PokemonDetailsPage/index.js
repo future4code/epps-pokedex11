@@ -51,7 +51,7 @@ const PokemonDetailsPage = () => {
     pokemonDetails.stats &&
     pokemonDetails.stats.map((stat) => {
       return (
-        <p key={stat.name}>
+        <p key={stat.stat.name}>
           <strong>{camelCase(stat.stat.name)}:</strong> {stat.base_stat}
         </p>
       );
@@ -120,7 +120,7 @@ const PokemonDetailsPage = () => {
           img = "";
       }
       return (
-        <div key={type.name}>
+        <div key={type.type.name}>
           {img}
         </div>
       );
@@ -129,7 +129,7 @@ const PokemonDetailsPage = () => {
   const moves =
     pokemonDetails.moves &&
     pokemonDetails.moves.map((move) => {
-      return <p key={move.name}>{camelCase(move.move.name)}</p>;
+      return <p key={move.move.name}>{camelCase(move.move.name)}</p>;
     });
 
   return (
