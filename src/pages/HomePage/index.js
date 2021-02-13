@@ -16,10 +16,8 @@ const HomePage = () => {
   useEffect(() => {
     let storedPokemons = JSON.parse(localStorage.getItem("pokemons"));
     if (storedPokemons && storedPokemons.length > 0) {
-      console.log("tem")
       setPokemons(storedPokemons);
     } else {
-      console.log("não tem")
       getPokemons();
     }
   }, [pokedex]);
