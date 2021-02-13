@@ -88,6 +88,7 @@ export const ContainerContentPokemon = styled.div`
     background-color: #cc0000;
     width: 300px;
     transition: all 0.3s ease-in-out;
+    overflow-x: hidden;
     &:hover {
       box-shadow: 2px 2px 5px black;
       transition: all 0.3s ease-in-out;
@@ -116,7 +117,7 @@ export const ContainerContentPokemon = styled.div`
       transition: all 0.3s ease-in-out;
     }
     .type-img {
-      height: 80px;
+      height: 70px;
     }
   }
   .moves {
@@ -158,4 +159,39 @@ export const ContainerContentPokemon = styled.div`
       box-shadow: 2px 2px 5px black;
     }
   }
+`;
+
+// -------------------------
+
+export const ProgressBar = styled.div`
+  height: 20px;
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+
+  .label{
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #000;
+  }
+`;
+
+export const BaseBox = styled.div`
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 3px;
+  transition: width 0.5s ease-in-out;
+`;
+
+export const Background = styled(BaseBox)`
+  background: #3d7dca;
+  width: 100%;
+`;
+
+export const Progress = styled(BaseBox)`
+  background: #ffcb05;
+  width: ${({ percent }) => percent}%;
 `;
