@@ -127,6 +127,11 @@ export const CardContainer = styled.div`
 
     background-color: #cc0000;
 
+    @media(max-width: 619px){
+      height: 68px;
+      align-items: center;
+    }
+
     h2 {
       font-family: "PokemonFont";
       margin-top: -15px;
