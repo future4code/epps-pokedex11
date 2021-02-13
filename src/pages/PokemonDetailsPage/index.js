@@ -6,6 +6,9 @@ import { goToPage } from "../../router/Coordinator";
 import {
   ContainerPokemonDetails,
   ContainerContentPokemon,
+  ProgressBar,
+  Background,
+  Progress,
 } from "../PokemonDetailsPage/styled";
 import bug from "../../images/types/bug.png";
 import dark from "../../images/types/dark.png";
@@ -51,9 +54,18 @@ const PokemonDetailsPage = () => {
     pokemonDetails.stats &&
     pokemonDetails.stats.map((stat) => {
       return (
-        <p key={stat.stat.name}>
-          <strong>{camelCase(stat.stat.name)}:</strong> {stat.base_stat}
-        </p>
+        <>
+          {/* <p key={stat.stat.name}>
+            <strong>{camelCase(stat.stat.name)}:</strong> {stat.base_stat}
+          </p> */}
+          <ProgressBar key={stat.stat.name}>
+            <Background />
+            <p className="label">
+              <strong>{camelCase(stat.stat.name)}:</strong> {stat.base_stat}
+            </p>
+            <Progress percent={stat.base_stat} />
+          </ProgressBar>
+        </>
       );
     });
 
@@ -148,7 +160,7 @@ const PokemonDetailsPage = () => {
       )}
       {pokemonDetails && (
         <>
-          <h2>{pokemonDetails.name}</h2>
+          <h2 className="name-title">{pokemonDetails.name}</h2>
           <ContainerContentPokemon>
             <div className="imgs-Pokemon">
               <img

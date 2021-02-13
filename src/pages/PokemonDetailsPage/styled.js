@@ -9,10 +9,6 @@ export const ContainerPokemonDetails = styled.div`
   margin-top: 100px;
   cursor: default;
 
-  /* @media screen and (max-width: 619px) {
-      margin-top: 425px;
-  } */
-
   .back-btn {
     position: absolute;
     top: 80px;
@@ -23,7 +19,9 @@ export const ContainerPokemonDetails = styled.div`
     top: 80px;
     right: 10px;
   }
-  h2 {
+  .name-title {
+    position: absolute;
+    top: 130px;
     text-align: center;
     font-family: "PokemonFont";
     color: #ffcb05;
@@ -32,14 +30,12 @@ export const ContainerPokemonDetails = styled.div`
     -webkit-text-stroke-width: 0.7px;
     -webkit-text-stroke-color: #003a70;
     margin: 0;
-
-    @media(max-width: 619px){
-      margin-top: 700px;
-    }
   }
 `;
 
 export const ContainerContentPokemon = styled.div`
+  position: absolute;
+  top: 230px;
   display: flex;
   width: 850px;
   max-width: calc(100vw - 20px);
@@ -47,14 +43,17 @@ export const ContainerContentPokemon = styled.div`
   flex-wrap: wrap;
   gap: 10px;
   color: #ffcb05;
+
   div,
   img {
     border-radius: 10px;
   }
   h2 {
+    padding-top: 20px;
     text-align: center;
     font-family: "PokemonFont";
-    letter-spacing: 3px;
+    letter-spacing: 5px;
+    font-size: 30px;
     -webkit-text-stroke-width: 0.7px;
     -webkit-text-stroke-color: #003a70;
     margin: 0;
@@ -72,7 +71,7 @@ export const ContainerContentPokemon = styled.div`
       width: 150px;
       transition: all 0.3s ease-in-out;
 
-      @media(max-width: 619px){
+      @media (max-width: 619px) {
         width: 135px;
       }
       &:hover {
@@ -89,6 +88,7 @@ export const ContainerContentPokemon = styled.div`
     background-color: #cc0000;
     width: 300px;
     transition: all 0.3s ease-in-out;
+    overflow-x: hidden;
     &:hover {
       box-shadow: 2px 2px 5px black;
       transition: all 0.3s ease-in-out;
@@ -102,7 +102,7 @@ export const ContainerContentPokemon = styled.div`
 
     @media screen and (max-width: 619px) {
       margin-bottom: 30px;
-  }
+    }
   }
   .types {
     display: flex;
@@ -117,17 +117,19 @@ export const ContainerContentPokemon = styled.div`
       transition: all 0.3s ease-in-out;
     }
     .type-img {
-      height: 100px;
+      height: 70px;
     }
   }
   .moves {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 320px;
     background-color: #cc0000;
-    h2 {
-      margin: 0;
-    }
+
     div {
-      height: 200px;
+      flex-grow: 1;
+      margin: 0 10px 10px 10px;
       overflow-y: auto;
 
       /* width */
@@ -157,4 +159,39 @@ export const ContainerContentPokemon = styled.div`
       box-shadow: 2px 2px 5px black;
     }
   }
+`;
+
+// -------------------------
+
+export const ProgressBar = styled.div`
+  height: 20px;
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+
+  .label{
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #000;
+  }
+`;
+
+export const BaseBox = styled.div`
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 3px;
+  transition: width 0.5s ease-in-out;
+`;
+
+export const Background = styled(BaseBox)`
+  background: #3d7dca;
+  width: 100%;
+`;
+
+export const Progress = styled(BaseBox)`
+  background: #ffcb05;
+  width: ${({ percent }) => percent}%;
 `;

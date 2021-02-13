@@ -33,7 +33,7 @@ export const Wrapper = styled.div`
     .result-label {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-evenly;
       width: 100%;
       height: 160px;
       border-radius: 10px;
@@ -61,11 +61,10 @@ export const Wrapper = styled.div`
 
     h2 {
       font-family: "PokemonFont";
-      margin-top: -15px;
       color: #ffcb05;
       font-size: 40px;
       text-align: center;
-      letter-spacing: 4px;
+      letter-spacing: 6px;
       -webkit-text-stroke-width: 0.5px;
       -webkit-text-stroke-color: #003a70;
 
@@ -91,12 +90,21 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const PokemonContainer=styled.div`
-select{
-  width: 100%;
-  height: 2rem;
-}
-`
+export const PokemonContainer = styled.div`
+  select {
+    width: 100%;
+    height: 2rem;
+    background-color: #cc0000;
+    color: #ffcb05;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+  }
+`;
 
 export const MainWrapper = styled.div`
   display: flex;
@@ -134,7 +142,6 @@ export const CardContainer = styled.div`
 
     h2 {
       font-family: "PokemonFont";
-      margin-top: -15px;
       color: #ffcb05;
       font-size: 22px;
       text-align: center;

@@ -59,7 +59,7 @@ const BattlePage = () => {
       const pokeData = {
         img: loading,
       };
-      setPokemonA(pokeData);
+      setPokemonB(pokeData);
     }
   };
 
