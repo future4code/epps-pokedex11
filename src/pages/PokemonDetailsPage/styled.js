@@ -21,7 +21,7 @@ export const ContainerPokemonDetails = styled.div`
   }
   .name-title {
     position: absolute;
-    top: 130px;
+    top: 70px;
     text-align: center;
     font-family: "PokemonFont";
     color: #ffcb05;
@@ -35,7 +35,7 @@ export const ContainerPokemonDetails = styled.div`
 
 export const ContainerContentPokemon = styled.div`
   position: absolute;
-  top: 230px;
+  top: 200px;
   display: flex;
   width: 850px;
   max-width: calc(100vw - 20px);
