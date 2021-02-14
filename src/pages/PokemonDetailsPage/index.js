@@ -55,13 +55,11 @@ const PokemonDetailsPage = () => {
     pokemonDetails.stats.map((stat) => {
       return (
         <>
-          {/* <p key={stat.stat.name}>
-            <strong>{camelCase(stat.stat.name)}:</strong> {stat.base_stat}
-          </p> */}
           <ProgressBar key={stat.stat.name}>
             <Background />
             <p className="label">
-              <strong>{camelCase(stat.stat.name)}:</strong> {stat.base_stat}
+              <strong>{camelCase(stat.stat.name).replace("-", " ")}:</strong>{" "}
+              {stat.base_stat}
             </p>
             <Progress percent={stat.base_stat} />
           </ProgressBar>
@@ -131,31 +129,36 @@ const PokemonDetailsPage = () => {
         default:
           img = "";
       }
-      return (
-        <div key={type.type.name}>
-          {img}
-        </div>
-      );
+      return <div key={type.type.name}>{img}</div>;
     });
 
   const moves =
     pokemonDetails.moves &&
     pokemonDetails.moves.map((move) => {
-      return <p key={move.move.name}>{camelCase(move.move.name)}</p>;
+      return <p key={move.move.name}>{camelCase(move.move.name).replace("-"," ")}</p>;
     });
 
   return (
     <ContainerPokemonDetails>
       <div className="back-btn">
-        <Button onClick={() => goToPage(history, "/")}>Voltar</Button>
+        <Button borderRadius="10px" onClick={() => goToPage(history, "/")}>
+          Voltar
+        </Button>
       </div>
       {pokeIndex !== -1 ? (
         <div className="catch-btn">
-          <Button onClick={() => removeFromPokedex(pokemonId)}>Libertar</Button>
+          <Button
+            borderRadius="10px"
+            onClick={() => removeFromPokedex(pokemonId)}
+          >
+            Libertar
+          </Button>
         </div>
       ) : (
         <div className="catch-btn">
-          <Button onClick={() => addToPokedex(pokemonId)}>Capturar</Button>
+          <Button borderRadius="10px" onClick={() => addToPokedex(pokemonId)}>
+            Capturar
+          </Button>
         </div>
       )}
       {pokemonDetails && (

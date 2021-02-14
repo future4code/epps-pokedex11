@@ -8,7 +8,6 @@ export const ContainerPokemonDetails = styled.div`
   justify-content: space-evenly;
   margin-top: 100px;
   cursor: default;
-
   .back-btn {
     position: absolute;
     top: 80px;
@@ -30,8 +29,7 @@ export const ContainerPokemonDetails = styled.div`
     -webkit-text-stroke-width: 0.7px;
     -webkit-text-stroke-color: #003a70;
     margin: 0;
-
-    @media(max-width: 619px){
+    @media (max-width: 619px) {
       top: 130px;
     }
   }
@@ -47,7 +45,6 @@ export const ContainerContentPokemon = styled.div`
   flex-wrap: wrap;
   gap: 10px;
   color: #ffcb05;
-
   div,
   img {
     border-radius: 10px;
@@ -62,7 +59,6 @@ export const ContainerContentPokemon = styled.div`
     -webkit-text-stroke-color: #003a70;
     margin: 0;
   }
-
   p {
     margin: 30px;
   }
@@ -74,7 +70,6 @@ export const ContainerContentPokemon = styled.div`
       background-color: #cc0000;
       width: 150px;
       transition: all 0.3s ease-in-out;
-
       @media (max-width: 619px) {
         width: 135px;
       }
@@ -103,7 +98,6 @@ export const ContainerContentPokemon = styled.div`
     justify-content: space-between;
     flex-direction: column;
     width: 300px;
-
     @media screen and (max-width: 619px) {
       margin-bottom: 30px;
     }
@@ -130,33 +124,24 @@ export const ContainerContentPokemon = styled.div`
     justify-content: space-between;
     height: 320px;
     background-color: #cc0000;
-
     div {
       flex-grow: 1;
       margin: 0 10px 10px 10px;
       overflow-y: auto;
-
       /* width */
       ::-webkit-scrollbar {
         width: 15px;
       }
-
       /* Track */
       ::-webkit-scrollbar-track {
         box-shadow: inset 0 0 5px grey;
         border-radius: 10px;
         background-color: #3d7dca;
       }
-
       /* Handle */
       ::-webkit-scrollbar-thumb {
         background: #ffcb05;
         border-radius: 10px;
-      }
-
-      /* Handle on hover */
-      ::-webkit-scrollbar-thumb:hover {
-        background: #cc0000;
       }
     }
     &:hover {
@@ -172,8 +157,7 @@ export const ProgressBar = styled.div`
   width: 90%;
   margin: 0 auto;
   position: relative;
-
-  .label{
+  .label {
     position: relative;
     z-index: 1;
     text-align: center;

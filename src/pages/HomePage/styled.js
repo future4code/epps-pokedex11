@@ -58,8 +58,7 @@ export const PokemonsContainer = styled.div`
         .btn-container {
           width: 100%;
         }
-        }
-        
+        }  
       }
     }
 
