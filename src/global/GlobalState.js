@@ -13,7 +13,7 @@ const GlobalState = (props) => {
       const res = await axios.get(`${BASE_URL}/${pokemonId}`);
       const newPokemon = {
         id: res.data.id,
-        name: camelCase(res.data.name),
+        name: camelCase(res.data.name).replace("-", " "),
         moves: res.data.moves,
         stats: res.data.stats,
         types: res.data.types,
@@ -42,7 +42,7 @@ const GlobalState = (props) => {
       if (pokemonIndex < 0) {
         const newPokemon = {
           id: res.data.id,
-          name: camelCase(res.data.name),
+          name: camelCase(res.data.name).replace("-", " "),
           moves: res.data.moves,
           stats: res.data.stats,
           types: res.data.types,
@@ -73,7 +73,7 @@ const GlobalState = (props) => {
     );
     let newPokedex = [...pokedex];
     let newPokemon = {
-      name: camelCase(newPokedex[pokemonIndex].name),
+      name: camelCase(newPokedex[pokemonIndex].name).replace("-", " "),
       url: `${BASE_URL}/${newPokedex[pokemonIndex].id}`,
       id: newPokedex[pokemonIndex].id,
       imgUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${newPokedex[pokemonIndex].id}.png`,

@@ -5,11 +5,20 @@ import { BASE_URL } from "./../../parameters/API";
 import Card from "../../components/Card";
 import { Button } from "../../components/GlobalStyleds/GlobalStyleds";
 import { GlobalStateContext } from "./../../contexts/GlobalStateContext";
+import Pagination from "./../../components/Pagination/index";
+import { useHistory } from "react-router-dom";
 
 const HomePage = () => {
+  const history = useHistory();
+
   const [pokemons, setPokemons] = useState([]);
   const [searchName, setSearchName] = useState("");
-  const [limitSearch, setLimitSearch] = useState("151");
+  const [limitSearch, setLimitSearch] = useState("1118");
+
+  // PAGINAÇÃO ---------------------------------------------
+  const [currentPage, setCurrentPage] = useState(1);
+  const pokesPerPage = "20";
+  // -------------------------------------------------------
 
   const { camelCase, pokedex } = useContext(GlobalStateContext);
 
@@ -22,13 +31,19 @@ const HomePage = () => {
     }
   }, [pokedex]);
 
+  useEffect(() => {
+    if (limitSearch === "") {
+      setLimitSearch("1118");
+    }
+  }, [limitSearch]);
+
   const getPokemons = async () => {
     try {
       const res = await axios.get(`${BASE_URL}?limit=${limitSearch}`);
       let newArr = res.data.results;
       newArr.forEach((pokemon) => {
-        pokemon.name = camelCase(pokemon.name);
-        pokemon.id = pokemon.url.split("/")[pokemon.url.split("/").length - 2];
+        pokemon.name = camelCase(pokemon.name).replace("-", " ");
+        pokemon.id = Number(pokemon.url.split("/")[pokemon.url.split("/").length - 2]);
         pokemon.imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
       });
 
@@ -48,49 +63,92 @@ const HomePage = () => {
   };
 
   const randomList = () => {
-    axios
-      .get(`${BASE_URL}?limit=1118`)
-      .then((res) => {
-        let newArr = res.data.results;
-        newArr.forEach((pokemon) => {
-          pokemon.name = camelCase(pokemon.name);
-          pokemon.id = pokemon.url.split("/")[
-            pokemon.url.split("/").length - 2
-          ];
-          pokemon.imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
-        });
+    if(limitSearch >1 && limitSearch < 1118) {
+      axios
+        .get(`${BASE_URL}?limit=1118`)
+        .then((res) => {
+          let newArr = res.data.results;
+          console.log(res.data.results);
+          newArr.forEach((pokemon) => {
+            pokemon.name = camelCase(pokemon.name).replace("-", " ");
+            pokemon.id = Number(
+              pokemon.url.split("/")[pokemon.url.split("/").length - 2]
+            );
+            pokemon.imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
+          });
 
-        let newList = [];
-        let randomIndex = -1;
-        let match = -1;
+          console.log(newArr);
 
-        for (let i = 0; i < limitSearch; i++) {
-          randomIndex = Math.floor(Math.random() * 1188) + 1;
-          match = newList.findIndex(
-            (pokemon) => pokemon.id == newArr[randomIndex].id
-          );
-          while (match > -1) {
-            randomIndex = Math.floor(Math.random() * 1188) + 1;
+          let newList = [];
+          let randomIndex = Math.floor(Math.random() * 1118) + 1;
+          let match = -1;
+
+          newList.push(newArr[randomIndex]);
+
+          for (let i = 1; i < limitSearch; i++) {
+            randomIndex = Math.floor(Math.random() * 1118) + 1;
             match = newList.findIndex(
               (pokemon) => pokemon.id == newArr[randomIndex].id
             );
+            while (match > -1) {
+              randomIndex = Math.floor(Math.random() * 1188) + 1;
+              match = newList.findIndex(
+                (pokemon) => pokemon.id == newArr[randomIndex].id
+              );
+            }
+            newList.push(newArr[randomIndex]);
           }
-          newList.push(newArr[randomIndex]);
-        }
-        localStorage.setItem("pokemons", JSON.stringify(newList));
-        setPokemons(newList);
-      })
-      .catch((err) => {
-        alert(err);
-      });
+
+          for (let idx = 0; idx < pokedex.length; idx++) {
+            let index = newList.findIndex(
+              (pokemon) => pokemon.id == pokedex[idx].id
+            );
+            if (index >= 0) {
+              newList.splice(index, 1);
+            }
+          }
+          localStorage.setItem("pokemons", JSON.stringify(newList));
+          setPokemons(newList);
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    } else{
+      getPokemons()
+    }
   };
 
   const filterPokemons = () => {
-    let filteredByName = pokemons.filter((pokemon) =>
-      pokemon.name.toLowerCase().includes(searchName.toLowerCase())
-    );
-    return filteredByName;
+    if (searchName.length === 0) {
+      let filteredByName = currentPokes.filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(searchName.toLowerCase())
+      );
+      return filteredByName;
+    } else {
+      currentPokes = pokemons.slice(0, limitSearch);
+      let filteredByName = currentPokes.filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(searchName.toLowerCase())
+      );
+      return filteredByName;
+    }
   };
+
+  // PAGINAÇÃO-----------------------------------------
+  const indexOfLastPoke = currentPage * pokesPerPage;
+  const indexOfFirstPoke = indexOfLastPoke - pokesPerPage;
+  let currentPokes = pokemons.slice(indexOfFirstPoke, indexOfLastPoke);
+  const paginate = (pageNumber) => {
+    if (
+      pageNumber > 0 &&
+      pageNumber <= Math.ceil(pokemons.length / pokesPerPage)
+    ) {
+      setCurrentPage(pageNumber);
+      history.push(`/page/${pageNumber}`);
+    } else {
+      alert("Escolha um número válido.");
+    }
+  };
+  // ------------------------------------------------------
 
   const filteredPokemons = filterPokemons();
 
@@ -112,11 +170,20 @@ const HomePage = () => {
               onChange={(e) => setLimitSearch(e.target.value)}
             />
             <div className="btn-container">
-              <Button onClick={() => getPokemons()}>Lista Padrão</Button>
-              <Button onClick={() => randomList()}>Lista aleatória</Button>
+              <Button borderRadius="10px 0 0 10px" onClick={() => getPokemons()}>Lista Padrão</Button>
+              <Button borderRadius="0 10px 10px 0" onClick={() => randomList()}>Lista aleatória</Button>
             </div>
           </div>
         </div>
+
+        <div>
+          <Pagination
+            pokesPerPage={pokesPerPage}
+            totalPokes={pokemons.length}
+            paginate={paginate}
+          />
+        </div>
+
         <div className="pokemons-list">
           {pokemons.length > 0 &&
             filteredPokemons.map((pokemon) => {

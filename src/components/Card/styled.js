@@ -31,6 +31,7 @@ export const Container = styled.div`
 
     h2 {
       font-family: "PokemonFont";
+      margin-top: -15px;
       color: #ffcb05;
       font-size: 22px;
       text-align: center;
