@@ -5,7 +5,7 @@ Nome dos integrantes:
 - Fabio dos Santos
 - Márcia Dolores Simplicio
 
-Link do Surge: http://epps-pokedex11.surge.sh/
+Link do Surge: http://epps-pokedex-11.surge.sh/
 
 O que funciona:
 - Renderização de todas as infos;
