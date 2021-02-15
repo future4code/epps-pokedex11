@@ -19,15 +19,23 @@ const PokedexPage = () => {
   return (
     <PokemonsContainer>
       <div className="back-btn">
-        <Button onClick={() => goToPage(history, "/")}>Voltar</Button>
+        <Button borderRadius="10px" onClick={() => goToPage(history, "/")}>
+          Voltar
+        </Button>
       </div>
-      {pokedex.length > 0 ? 
+      {pokedex.length > 0 ? (
         <div className="battle-btn">
-          <Button onClick={() => goToPage(history, "/battle")}>Batalhar</Button>
-        </div> : 
-        ''
-      }
-      
+          <Button
+            borderRadius="10px"
+            onClick={() => goToPage(history, "/battle")}
+          >
+            Batalhar
+          </Button>
+        </div>
+      ) : (
+        ""
+      )}
+
       {pokedex.map((pokemon) => {
         return (
           <Card

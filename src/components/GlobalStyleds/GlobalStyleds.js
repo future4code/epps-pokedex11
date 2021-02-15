@@ -21,6 +21,7 @@ export const Button = styled.button`
   color: #ffcb05;
   letter-spacing: 1px;
   border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: ${props=>props.borderRadius};
 
   outline: none;
   cursor: pointer;

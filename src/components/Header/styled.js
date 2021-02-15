@@ -13,15 +13,17 @@ export const Wrapper = styled.div`
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  justify-content: center;
   gap: 10px;
-  @media screen and (max-width: 767px) {
-    grid-template-columns: 150px 1fr
-  }
 
   padding: 10px;
   background-color: #cc0000;
   box-shadow: 0px 4px 8px -6px;
+
+  @media(max-width: 619px){
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
 
   .pokedex-btn {
     height: 42px;
@@ -29,6 +31,11 @@ export const Wrapper = styled.div`
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+
+    @media(max-width: 619px){
+      height: 100%;
+
+    }
     &:hover {
       transform: scale(1.05);
       transition: all 0.2s ease-in-out;
@@ -40,7 +47,7 @@ export const Wrapper = styled.div`
     }
   }
 
-  .back-btn {
+  .back-btn{
     width: 100px;
   }
 
@@ -49,16 +56,27 @@ export const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+
+    margin-top: -25px;
     width: 100%;
 
+    @media(max-width: 619px){
+      height: 100%;
+      margin-top: 0;
+      align-items: flex-end;
+    }
     h2 {
-      margin-top: -15px;
       font-family: "PokemonFont";
-      font-size: 25px;
+      font-size: 28px;
       letter-spacing: 3px;
+
       color: #ffcb05;
       -webkit-text-stroke-width: 0.5px;
       -webkit-text-stroke-color: #003a70;
+
+      @media(max-width: 619px){
+        font-size: 25px;
+      }
     }
   }
 `;

@@ -29,15 +29,22 @@ const Card = (props) => {
       </div>
       <div className="cards-btn-container">
         {currentPathname === "/pokedex" ? (
-          <Button onClick={() => removeFromPokedex(props.pokemonId)}>
+          <Button
+            borderRadius="0 0 0 5px"
+            onClick={() => removeFromPokedex(props.pokemonId)}
+          >
             Libertar
           </Button> //SE ESTIVER NA PÁGINA DA POKEDEX, O TEXTO DO BOTÃO MUDA PARA 'LIBERTAR'
         ) : (
-          <Button onClick={() => addToPokedex(props.pokemonId)}>
+          <Button
+            borderRadius="0 0 0 5px"
+            onClick={() => addToPokedex(props.pokemonId)}
+          >
             Capturar
           </Button> //SE ESTIVER NAS OUTRAS PÁGINAS, O TEXTO DO BOTÃO MUDA PARA 'CAPTURAR'
         )}
         <Button
+          borderRadius="0 0 5px 0"
           onClick={() => goToPage(history, `/poke-detail/${props.pokemonId}`)}
         >
           Detalhes
