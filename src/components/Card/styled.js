@@ -23,15 +23,16 @@ export const Container = styled.div`
     white-space: nowrap;
     overflow-x: hidden;
     overflow-y: hidden;
+    border-radius: 5px 5px 0 0;
 
-    @media(max-width: 619px){
-      height: 68px;
+    @media (max-width: 619px) {
+      height: 52px;
       align-items: center;
     }
 
     h2 {
       font-family: "PokemonFont";
-      margin-top: -15px;
+      margin-top: -10px;
       color: #ffcb05;
       font-size: 22px;
       text-align: center;

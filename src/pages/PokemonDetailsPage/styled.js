@@ -81,11 +81,13 @@ export const ContainerContentPokemon = styled.div`
     @media screen and (max-width: 619px) {
       flex-direction: row;
       width: 300px;
+      margin-top: 25px;
     }
   }
   .stats {
     background-color: #cc0000;
     width: 300px;
+    padding: 15px 0;
     transition: all 0.3s ease-in-out;
     overflow-x: hidden;
     &:hover {
@@ -124,6 +126,7 @@ export const ContainerContentPokemon = styled.div`
     justify-content: space-between;
     height: 320px;
     background-color: #cc0000;
+    padding: 15px 0;
     div {
       flex-grow: 1;
       margin: 0 10px 10px 10px;
